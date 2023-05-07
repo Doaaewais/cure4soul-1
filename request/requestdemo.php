@@ -14,7 +14,7 @@ if(isset($_POST['submit'])){
     $industryy=mysqli_real_escape_string($conn,$_POST['industry']);
     $numofempp=mysqli_real_escape_string($conn,$_POST['employees']);
     $websitee=mysqli_real_escape_string($conn,$_POST['website']);
-    $sql="INSERT INTO reqdemo(fname,lname,wemail,mobile,country,jobtitle,company,industry,numofemp,website)VALUES('$fnn','$lnn','$wemaill','$mobilee','$counn','$jobb','$companyy','$industryy','$numofempp','$websitee')";
+    $sql="INSERT INTO reqdemo(fname,lname,wemail,mobile,country,jobtitle,company,industry,numofemp,website)Values('$fnn','$lnn','$wemaill','$mobilee','$counn','$jobb','$companyy','$industryy','$numofempp','$websitee')";
     mysqli_query($conn,$sql);
     }
 
@@ -31,7 +31,7 @@ if(isset($_POST['submit'])){
     </head>
     <body>
         
-        <form>
+        <form method='post'>
             
           <div class="container">
             <h2>  Request A Demo</h2>

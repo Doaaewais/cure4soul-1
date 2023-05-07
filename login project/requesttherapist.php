@@ -15,7 +15,8 @@ if(isset($_post['submit'])){
   $phone=mysqli_real_escape_string($conn,$_post['phone']);
   $nid=mysqli_real_escape_string($conn,$_post['nid']);
   $cv=mysqli_real_escape_string($conn,$_post['cv']);
-  $sql="INSERT INTO reqther(fname,mname,lname,dayy,monthh,yearr,addresss,email,spec,phone,nid,cv) values ('$fname','$mname','$lname','$dayy','$monthh','$yearr','$addresss','$email','$spec','$phone','$nid','$cv')";
+
+  $sql="INSERT INTO reqther(fname,mname,lname,dayy,monthh,yearr,addresss,email,spec,phone,nid,cv) Values('$fname','$mname','$lname','$dayy','$monthh','$yearr','$addresss','$email','$spec','$phone','$nid','$cv')";
   mysqli_query($conn,$sql);
   
 }

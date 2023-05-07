@@ -11,7 +11,8 @@ if(isset($_post['submit'])){
   $dt=mysqli_real_escape_string($conn,$_post['dt']);
   $topic=mysqli_real_escape_string($conn,$_post['topic']);
   $numofpart=mysqli_real_escape_string($conn,$_post['numofpart']);
-  $sql="INSERT INTO reqseminar(compname,email,phone,duration,dt,topic,numofpart) values ('$company','$email','$phone','$duration','$dt','$topic',$numofpart')";
+
+  $sql="INSERT INTO reqseminar(compname,email,phone,duration,dt,topic,numofpart) values('$company','$email','$phone','$duration','$dt','$topic',$numofpart')";
   mysqli_query($conn,$sql);
   
 }
@@ -37,7 +38,7 @@ if(isset($_post['submit'])){
             
             
                 <div class="col-md-6 py-4 child">
-                    <form action="/action_page.php">
+                    <form action="/action_page.php" mrthod='post'>
                         <div class="form-group">
                             <label for="company">Company name :</label>
                             <input type="text" class="form-control" id="company" name="company" required>

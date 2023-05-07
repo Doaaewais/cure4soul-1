@@ -32,7 +32,7 @@ if(isset($_post['submit'])){
     <body>
         <div class="req container">
             <h3>Therapist's application</h3>
-            <form class="row reqform">
+            <form class="row reqform" method='post'>
                 <h4 >Full Name</h4>
                 <div class="col-md-4">
                     <label> firstname</label>

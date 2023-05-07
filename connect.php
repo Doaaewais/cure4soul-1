@@ -2,11 +2,11 @@
 <?php
 $servername = "localhost";
 
-$username ="root";
+$username ="id20714674_soul";
 
-$password ="";
+$password ="Cure4soul@alaa";
 
-$dbname="rege";
+$dbname="id20714674_cure";
 $conn= mysqli_connect ($servername,$username ,$password ,$dbname);
 if (!$conn)
 {

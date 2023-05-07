@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="css/therapist.css">
+        <script src="js/therapist.js"></script>
+    </head>
+<body>
+  <section id="Schedule">
+  <div class="container py-5 g-5">
+    <div class="">
+        <h2>Add Weekly Schedule</h2>
+        <form id="schedule-form">
+          <div>
+            <label for="start-date">Start Date:</label>
+            <input type="date" id="start-date" name="start-date" required>
+          </div>
+          <div>
+            <label for="end-date">End Date:</label>
+            <input type="date" id="end-date" name="end-date" required>
+          </div>
+          <div>
+            <label for="days">Days:</label>
+            <input type="checkbox" id="sunday" name="days" value="sunday">
+            <label for="sunday">sunday</label>
+            <input type="checkbox" id="monday" name="days" value="monday">
+            <label for="monday">Monday</label>
+            <input type="checkbox" id="tuesday" name="days" value="tuesday">
+            <label for="tuesday">Tuesday</label>
+            <input type="checkbox" id="wednesday" name="days" value="wednesday">
+            <label for="wednesday">Wednesday</label>
+            <input type="checkbox" id="thursday" name="days" value="thursday">
+            <label for="thursday">Thursday</label>
+            <input type="checkbox" id="friday" name="days" value="friday">
+            <label for="friday">Friday</label>
+          </div>
+          <div>
+            <label for="start-time">Start Time:</label>
+            <input type="time" id="start-time" name="start-time" required>
+          </div>
+          <div>
+            <label for="end-time">End Time:</label>
+            <input type="time" id="end-time" name="end-time" required>
+          </div>
+          <button type="submit">Add Schedule</button>
+        </form>
+      </div>     
+      </div>
+    </section>
+    <section id="footer">
+      <h2>Copyright © 2023 cure4soul, Inc.</h2>
+    </section>
+</body>
+</html> 

@@ -18,7 +18,7 @@ if(isset($_post['sub'])){
                  $ni=mysqli_real_escape_string($conn,$_post['nid']);
                  $cvv=mysqli_real_escape_string($conn,$_post['cv']);
 
-                 $sq="INSERT INTO reqther2(fname,mname,lname,dayy,monthh,yearr,addresss,email,spec,phone,nid,cv) Values('$fnam','$mnam','$lnam','$dayy','$monthh','$yearr','$addresss','$emai','$spe','$phon','$ni','$cvv')";
+                 $sq="INSERT INTO reqther(fname,mname,lname,dayy,monthh,yearr,addresss,email,spec,phone,nid,cv) Values('$fnam','$mnam','$lnam','$dayy','$monthh','$yearr','$addresss','$emai','$spe','$phon','$ni','$cvv')";
                  mysqli_query($conn,$sq); 
                 } 
 
@@ -34,7 +34,7 @@ if(isset($_post['sub'])){
     <body>
         <div class="req container">
             <h3>Therapist's application</h3>
-            <form class="row reqform" method='post'>
+            <form method='post' class="row reqform">
                 <h4 >Full Name</h4>
                 <div class="col-md-4">
                     <label> firstname</label>
@@ -87,7 +87,7 @@ if(isset($_post['sub'])){
                     <input class="form-control" type="file" id="formFileMultiple" name="cv" >
                   </div>
 
-                  <button class="btn btn-primary " name="sub" type="submit">Button</button>
+                  <button class="btn btn-primary " name="sub" type="submit">submit</button>
             </form>
         </div>
     </body>

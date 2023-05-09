@@ -51,7 +51,7 @@ if(isset($_POST['submit'])){
               </div>
               <div class="form-group">
                 <label for="Mobile">Mobile:</label>
-                <input type="number" class="form-control" id="Mobile" placeholder="Enter Mobile" name="Mobile">
+                <input type="number" class="form-control" id="Mobile" placeholder="Enter Mobile" name="mobile">
               </div>
               <div class="form-group">
                 <label for="country">country:</label>
@@ -67,7 +67,7 @@ if(isset($_POST['submit'])){
               </div>
               <div class="form-group">
                 <label for="Industry">Industry:</label>
-                <input type="Industry" class="form-control" id="Industry" placeholder="Enter Industry" name="Industry">
+                <input type="Industry" class="form-control" id="Industry" placeholder="Enter Industry" name="industry">
               </div>
               <div class="form-group">
                 <label for="employees">No. of employees:</label>
@@ -75,7 +75,7 @@ if(isset($_POST['submit'])){
               </div>
               <div class="form-group">
                 <label for="Website">Website:</label>
-                <input type="Website" class="form-control" id="Website" placeholder="Enter Website" name="Website">
+                <input type="Website" class="form-control" id="Website" placeholder="Enter Website" name="website">
               </div>
               <div class="checkbox">
                 <label><input type="checkbox" name="remember"> Remember me</label>

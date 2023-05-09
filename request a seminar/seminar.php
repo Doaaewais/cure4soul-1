@@ -1,23 +1,24 @@
 
-<?php include('connection.php'); 
-if(!isset($_session)){
+<?php include('connection.php');?>
+<?PHP 
+if(! isset($_session)){
   session_start();
 }
-if(isset($_post['submit'])){
-  $company=mysqli_real_escape_string($conn,$_post['company']);
-  $email= mysqli_real_escape_string($conn,$_post['email']);
-  $phone=mysqli_real_escape_string($conn,$_post['phone']);
-  $duration=mysqli_real_escape_string($conn,$_post['duration']);
-  $dt=mysqli_real_escape_string($conn,$_post['dt']);
-  $topic=mysqli_real_escape_string($conn,$_post['topic']);
-  $numofpart=mysqli_real_escape_string($conn,$_post['numofpart']);
+if(isset($_POST['Submit'])){
+    $comp=mysqli_real_escape_string($conn,$_POST['company']);
+    $emai=mysqli_real_escape_string($conn,$_POST['email']);
+    $pho= mysqli_real_escape_string($conn,$_POST['phone']);
+    $du=mysqli_real_escape_string($conn,$_POST['duration']);
+    $dt=mysqli_real_escape_string($conn,$_POST['dt']);
+    $top=mysqli_real_escape_string($conn,$_POST['topic']);
+    $numofp=mysqli_real_escape_string($conn,$_POST['numofpart']);
 
-  $sql="INSERT INTO reqseminar(compname,email,phone,duration,dt,topic,numofpart) values('$company','$email','$phone','$duration','$dt','$topic',$numofpart')";
-  mysqli_query($conn,$sql);
-  
-}
+    $a="INSERT INTO reqseminar(compname,email,phone,duration,dt,topic,numofpart) Values('$comp','$emai','$pho','$du','$dt','$top','$numofp')";
+    mysqli_query($conn,$a);
+    }
 
 ?>
+
 <html>
     <head>
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -38,7 +39,7 @@ if(isset($_post['submit'])){
             
             
                 <div class="col-md-6 py-4 child">
-                    <form action="/action_page.php" mrthod='post'>
+                    <form method='post'>
                         <div class="form-group">
                             <label for="company">Company name :</label>
                             <input type="text" class="form-control" id="company" name="company" required>
@@ -50,15 +51,15 @@ if(isset($_post['submit'])){
 
                         <div class="form-group">
                           <label for="phone">Phone</label>
-                          <input type="number" class="form-control" id="phone" name="phone" required>
+                          <input type="text" class="form-control" id="phone" name="phone" required>
                         </div>
                         <div class="form-group">
                           <label for="duration">Duration</label>
-                          <input type="number" class="form-control" id="duration" name="duration" required>
+                          <input type="text" class="form-control" id="duration" name="duration" required>
                         </div>
                         <div class="form-group">
                             <label for="datetime">Date time:</label>
-                            <input type="time" class="form-control" id="datetimne" name="dt" required>
+                            <input type="datetime-local" class="form-control" id="datetimne" name="dt" required>
                           </div>
                           <div class="form-group">
                             <label for="topic">Topic:</label>
@@ -74,7 +75,7 @@ if(isset($_post['submit'])){
                         <div class="checkbox">
                           <label><input type="checkbox"> Remember me</label>
                         </div>
-                        <button name="submit" type="submit" class="btn btn-primary">Submit</button>
+                        <button name="Submit" type="submit" class="btn btn-primary">Submit</button>
                       </form>
         
             </div> 

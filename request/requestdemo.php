@@ -1,4 +1,5 @@
 <?php include('connection.php');?>
+<?php include('login.php');?>
 <?PHP 
 if(! isset($_session)){
   session_start();

@@ -1,23 +1,29 @@
-<<<<<<<< HEAD:login project/loginclient/index.php
-========
 <?php include("connection.php"); ?>
 <?php
-if(! isset($_session)){
-    session_start();
-}
-if(isset($_POST['login'])){
-    $n=mysqli_real_escape_string($conn,$_POST['company']);
-    $e=mysqli_real_escape_string($conn,$_POST['email']);
-    $p=mysqli_real_escape_string($conn,$_POST['password']);
-    $t="SELECT * FROM emp WHERE 'company'='$n' AND 'email'='$e' AND 'password'='$p'";
-    $r=mysqli_query($conn,$t); 
-if(mysqli_num_rows($r)==1){
-    header('location:requestdemo.php');
-}    
+if (isset(($_POST)['login'])) {
+    // Retrieve the email and password from the POST data
+    $company =mysqli_real_escape_string($conn,$_POST['company']);
+    $email =mysqli_real_escape_string($conn,$_POST['email']);
+    $password =mysqli_real_escape_string($conn,$_POST['password']); 
+
+    // Build the SQL query to check if the email and password match a row in the users table
+    $sql = "SELECT * FROM emp WHERE company='$company' AND email = '$email' AND password = '$password'";
+
+    // Execute the query and get the result
+    $result = mysqli_query($conn, $sql);
+
+    // Check if there is a row in the result (i.e., if the email and password matched a row in the table)
+    if (mysqli_num_rows($result) > 0) {
+        // Redirect the user to the home page
+        header('Location:requestdemo.php');
+        exit();
+    } else {
+        // Display an error message
+        echo "Invalid email or password";
+    }
 }
 
 ?>
->>>>>>>> 5be4abbea7db8d7807d6236fe45827f075cd069b:login project/login.php
 <html>
 
 <head>
@@ -33,11 +39,11 @@ if(mysqli_num_rows($r)==1){
         Login to CURE4SOUL
     </h4>
     <div class="frame">
-<<<<<<<< HEAD:login project/loginclient/index.php
+
         <form >
-========
-        <form method='post'>
->>>>>>>> 5be4abbea7db8d7807d6236fe45827f075cd069b:login project/login.php
+
+        <form method='post' action="requestdemo.php">
+
             <br><br>
             <label for="company">Enter your company</label><br>
             <input class="for" type="text" id="company" name="company" required><br>
@@ -47,11 +53,10 @@ if(mysqli_num_rows($r)==1){
             <br>
             <label for="password">Enter your password</label><br>
             <input class="for"  type="password" id="password" name="password" required><br><br>
-<<<<<<<< HEAD:login project/loginclient/index.php
-            <button type="submit" class="submit1">Login</button><br><br>
-========
+
+
             <button type="submit" name="login" class="submit1">Login</button><br><br>
->>>>>>>> 5be4abbea7db8d7807d6236fe45827f075cd069b:login project/login.php
+
             <a href="forgot.html">forgot your password?</a>
             
     </div>

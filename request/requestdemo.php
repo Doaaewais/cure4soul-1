@@ -1,6 +1,6 @@
-<?php include('connection.php'); ?>
+<?php include('connection.php');?>
 <?PHP 
-if(!isset($_session)){
+if(! isset($_session)){
   session_start();
 }
 if(isset($_POST['submit'])){
@@ -14,7 +14,8 @@ if(isset($_POST['submit'])){
     $industryy=mysqli_real_escape_string($conn,$_POST['industry']);
     $numofempp=mysqli_real_escape_string($conn,$_POST['employees']);
     $websitee=mysqli_real_escape_string($conn,$_POST['website']);
-    $sql="INSERT INTO reqdemo(fname,lname,wemail,mobile,country,jobtitle,company,industry,numofemp,website)Values('$fnn','$lnn','$wemaill','$mobilee','$counn','$jobb','$companyy','$industryy','$numofempp','$websitee')";
+
+    $sql="INSERT INTO reqdemo(fname,lname,wemail,mobile,country,jobtitle,company,industry,numofemp,website) Values('$fnn','$lnn','$wemaill','$mobilee','$counn','$jobb','$companyy','$industryy','$numofempp','$websitee')";
     mysqli_query($conn,$sql);
     }
 
@@ -50,7 +51,7 @@ if(isset($_POST['submit'])){
               </div>
               <div class="form-group">
                 <label for="Mobile">Mobile:</label>
-                <input type="text" class="form-control" id="Mobile" placeholder="Enter Mobile" name="mobile">
+                <input type="number" class="form-control" id="Mobile" placeholder="Enter Mobile" name="Mobile">
               </div>
               <div class="form-group">
                 <label for="country">country:</label>
@@ -66,15 +67,15 @@ if(isset($_POST['submit'])){
               </div>
               <div class="form-group">
                 <label for="Industry">Industry:</label>
-                <input type="text" class="form-control" id="Industry" placeholder="Enter Industry" name="industry">
+                <input type="Industry" class="form-control" id="Industry" placeholder="Enter Industry" name="Industry">
               </div>
               <div class="form-group">
                 <label for="employees">No. of employees:</label>
-                <input type="text" class="form-control" id="employees" placeholder="Enter employees" name="employees">
+                <input type="employees" class="form-control" id="employees" placeholder="Enter employees" name="employees">
               </div>
               <div class="form-group">
                 <label for="Website">Website:</label>
-                <input type="text" class="form-control" id="Website" placeholder="Enter Website" name="website">
+                <input type="Website" class="form-control" id="Website" placeholder="Enter Website" name="Website">
               </div>
               <div class="checkbox">
                 <label><input type="checkbox" name="remember"> Remember me</label>

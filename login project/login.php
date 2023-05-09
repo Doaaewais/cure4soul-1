@@ -1,3 +1,5 @@
+<<<<<<<< HEAD:login project/loginclient/index.php
+========
 <?php include("connection.php"); ?>
 <?php
 if(! isset($_session)){
@@ -15,6 +17,7 @@ if(mysqli_num_rows($r)==1){
 }
 
 ?>
+>>>>>>>> 5be4abbea7db8d7807d6236fe45827f075cd069b:login project/login.php
 <html>
 
 <head>
@@ -30,7 +33,11 @@ if(mysqli_num_rows($r)==1){
         Login to CURE4SOUL
     </h4>
     <div class="frame">
+<<<<<<<< HEAD:login project/loginclient/index.php
+        <form >
+========
         <form method='post'>
+>>>>>>>> 5be4abbea7db8d7807d6236fe45827f075cd069b:login project/login.php
             <br><br>
             <label for="company">Enter your company</label><br>
             <input class="for" type="text" id="company" name="company" required><br>
@@ -40,7 +47,11 @@ if(mysqli_num_rows($r)==1){
             <br>
             <label for="password">Enter your password</label><br>
             <input class="for"  type="password" id="password" name="password" required><br><br>
+<<<<<<<< HEAD:login project/loginclient/index.php
+            <button type="submit" class="submit1">Login</button><br><br>
+========
             <button type="submit" name="login" class="submit1">Login</button><br><br>
+>>>>>>>> 5be4abbea7db8d7807d6236fe45827f075cd069b:login project/login.php
             <a href="forgot.html">forgot your password?</a>
             
     </div>

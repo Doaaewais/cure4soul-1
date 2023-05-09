@@ -1,25 +1,26 @@
-<?php include("connection.php"); 
-if(!isset($_session)){
+<?php include("connection.php");?>
+
+<?PHP 
+if(! isset($_session)){
   session_start();
 }
-if(isset($_post['submit'])){
-  $fname=mysqli_real_escape_string($conn,$_post['fname']);
-  $mname= mysqli_real_escape_string($conn,$_post['mname']);
-  $lname=mysqli_real_escape_string($conn,$_post['lname']);
-  $dayy=mysqli_real_escape_string($conn,$_post['day']);
-  $monthh=mysqli_real_escape_string($conn,$_post['month']);
-  $yearr=mysqli_real_escape_string($conn,$_post['year']);
-  $addresss=mysqli_real_escape_string($conn,$_post['address']);
-  $email=mysqli_real_escape_string($conn,$_post['email']);
-  $spec=mysqli_real_escape_string($conn,$_post['spec']);
-  $phone=mysqli_real_escape_string($conn,$_post['phone']);
-  $nid=mysqli_real_escape_string($conn,$_post['nid']);
-  $cv=mysqli_real_escape_string($conn,$_post['cv']);
+if(isset($_post['sub'])){
+                 $fnam=mysqli_real_escape_string($conn,$_post['fname']);
+                 $mnam= mysqli_real_escape_string($conn,$_post['mname']);
+                 $lnam=mysqli_real_escape_string($conn,$_post['lname']);
+                 $dayy=mysqli_real_escape_string($conn,$_post['day']);
+                 $monthh=mysqli_real_escape_string($conn,$_post['month']);
+                 $yearr=mysqli_real_escape_string($conn,$_post['year']);
+                 $addresss=mysqli_real_escape_string($conn,$_post['address']);
+                 $emai=mysqli_real_escape_string($conn,$_post['email']);
+                 $spe=mysqli_real_escape_string($conn,$_post['spec']);
+                 $phon=mysqli_real_escape_string($conn,$_post['phone']);
+                 $ni=mysqli_real_escape_string($conn,$_post['nid']);
+                 $cvv=mysqli_real_escape_string($conn,$_post['cv']);
 
-  $sql="INSERT INTO reqther(fname,mname,lname,dayy,monthh,yearr,addresss,email,spec,phone,nid,cv) Values('$fname','$mname','$lname','$dayy','$monthh','$yearr','$addresss','$email','$spec','$phone','$nid','$cv')";
-  mysqli_query($conn,$sql);
-  
-}
+                 $sq="INSERT INTO reqther2(fname,mname,lname,dayy,monthh,yearr,addresss,email,spec,phone,nid,cv) Values('$fnam','$mnam','$lnam','$dayy','$monthh','$yearr','$addresss','$emai','$spe','$phon','$ni','$cvv')";
+                 mysqli_query($conn,$sq); 
+                } 
 
 ?>
 <html>
@@ -83,10 +84,10 @@ if(isset($_post['submit'])){
                 </div>
                 <div class="mb-3">
                     <label for="formFileMultiple" class="form-label">your CV</label>
-                    <input class="form-control" type="file" id="formFileMultiple" name="cv" multiple required>
+                    <input class="form-control" type="file" id="formFileMultiple" name="cv" >
                   </div>
 
-                  <button class="btn btn-primary " name="submit" type="submit">Button</button>
+                  <button class="btn btn-primary " name="sub" type="submit">Button</button>
             </form>
         </div>
     </body>

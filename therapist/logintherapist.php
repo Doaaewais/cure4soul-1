@@ -1,19 +1,24 @@
 <?php include('connection.php');?>
-<?php include('therapistprofile.html');?>
 <?PHP 
-if(! isset($_session)){
+if(! isset($_SESSION)){
   session_start();
 }
 if (isset($_POST['login'])){
 
-    $ema=mysqli_real_escape_string($conn,$_POST['email']);
+    $l=mysqli_real_escape_string($conn,$_POST['email']);
     $p=mysqli_real_escape_string($conn,$_POST['password']);
 
-    $t="SELECT * FROM reqther where 'email'="$ema" And 'passwordd'="$p"";
+    $t="SELECT * FROM reqther where email='$l' And passwordd='$p' ";
     $r=mysqli_query($conn,$t);
-    if(mysqli_num_rows($r)==1){
-        header('location:therapistprofile.html')
-    }
+
+if(mysqli_num_rows($r)==1)
+       {
+        $_SESSION['email']=$l;
+        header('location:therapistprofile.php');
+        exit;
+       }
+       else{$error='Invalid email or password';
+           }
 }
 ?>
 <html>
@@ -359,7 +364,7 @@ if (isset($_POST['login'])){
 
         <form >
 
-        <form method='post'>
+        <form method='POST' action='therapistprofile.php'>
 
             <br><br>
             
@@ -371,18 +376,14 @@ if (isset($_POST['login'])){
 
 
             <button type="submit" name="login" class="submit1">Login</button><br><br>
+            <?php if(isset($error)) {?>
+            <p><?php echo $error ;?></p>
+             <?php } ?>
 
             <a href="forgot.html" style="padding-left: 20px;">forgot your password?</a>
             
     </div>
  
 </div>
-
-
-
-
-
-
-
 </body>
 </html>

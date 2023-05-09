@@ -12,12 +12,18 @@ if(isset($_POST['sub'])){
                  $yearr=mysqli_real_escape_string($conn,$_POST['yearr']);
                  $addresss=mysqli_real_escape_string($conn,$_POST['addresss']);
                  $emai=mysqli_real_escape_string($conn,$_POST['email']);
+                 $passwordd=mysqli_real_escape_string($conn,$_POST['pass']);
+                 $conpassword=mysqli_real_escape_string($conn,$_POST['conpass']);
                  $spe=mysqli_real_escape_string($conn,$_POST['spec']);
                  $phon=mysqli_real_escape_string($conn,$_POST['phonee']);
                  $ni=mysqli_real_escape_string($conn,$_POST['nid']);
                  $cvv=mysqli_real_escape_string($conn,$_POST['cv']);
-                 $sq="INSERT INTO reqther(fname,mname,lname,dayy,monthh,yearr,addresss,email,spec,phone,nid,cv) Values('$fnam','$mnam','$lnam','$dayy','$monthh','$yearr','$addresss','$emai','$spe','$phon','$ni','$cvv')";
-                 mysqli_query($conn,$sq); 
+                    if($passwordd != $conpassword){
+                           echo "password doesnot match"; }
+                    else{
+                          $sq="INSERT INTO reqther(fname,mname,lname,dayy,monthh,yearr,addresss,email,passwordd,spec,phone,nid,cv) Values('$fnam','$mnam','$lnam','$dayy','$monthh','$yearr','$addresss','$emai','$passwordd','$spe','$phon','$ni','$cvv')";
+                          mysqli_query($conn,$sq); 
+                     }
                 } 
 
 ?>
@@ -67,6 +73,16 @@ if(isset($_POST['sub'])){
                 <div class="col-md-4">
                     <label>email</label>
                     <input class="form-control" type="email" aria-label="default input example" name="email" required>
+                    </div>
+                <div class="col-md-6">
+                    <label>password</label>
+                    <input class="form-control" type="password" aria-label="default input example" name="pass" required>
+                </div>
+                </div>
+                <div class="col-md-6">
+                    <label>confirm password</label>
+                    <input class="form-control" type="password" aria-label="default input example" name="conpass" required>
+                </div>
                 </div>
                 <div class="col-md-6">
                     <label>specialization</label>

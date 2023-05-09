@@ -1,4 +1,21 @@
+<?php include('connection.php');?>
+<?php include('therapistprofile.html');?>
+<?PHP 
+if(! isset($_session)){
+  session_start();
+}
+if (isset($_POST['login'])){
 
+    $ema=mysqli_real_escape_string($conn,$_POST['email']);
+    $p=mysqli_real_escape_string($conn,$_POST['password']);
+
+    $t="SELECT * FROM reqther where 'email'="$ema" And 'passwordd'="$p"";
+    $r=mysqli_query($conn,$t);
+    if(mysqli_num_rows($r)==1){
+        header('location:therapistprofile.html')
+    }
+}
+?>
 <html>
 
 <head>

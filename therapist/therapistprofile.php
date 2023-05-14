@@ -1,4 +1,5 @@
-<!-- <?php include('connection.php');?> -->
+<?php include('connection.php');?>
+<?php include('logform.php');?>
 <!DOCTYPE html>
 <html>
     <head>

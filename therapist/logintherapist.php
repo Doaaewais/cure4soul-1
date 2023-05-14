@@ -1,35 +1,3 @@
-<?php include('connection.php');?>
-<?PHP 
-if(! isset($_SESSION)){
-    session_start();
-  }
-if(isset($_POST['login'])){
-     $email = mysqli_real_escape_string($conn, $_POST['email']);
-     $password = mysqli_real_escape_string($conn, $_POST['password']);
-
-// SQL query to check if email and password match
-     $sql = "SELECT * FROM therapist WHERE email = '$email' AND password = '$password'";
-     $result = mysqli_query($conn, $sql);
-
-// Check if query returned any result
-  if (mysqli_num_rows($result) > 1) {
-    // Login successful
-    $row = mysqli_fetch_assoc($result);
-      // Store user information in session variables
-    $_SESSION['user_id'] = $row['tid'];
-    $_SESSION['user_name'] = $row['name'];
-    
-    // Redirect user to their profile page
-    header("Location: therapistprofile.html");
-    exit();
-  } 
-  else {
-    // Login failed
-    echo "Invalid email or password.";
-  }
-}
-
-?>
 <html>
 
 <head>
@@ -373,7 +341,7 @@ if(isset($_POST['login'])){
 
         <form >
 
-        <form method='post' action='therapistprofile.php'>
+        <form method='POST' action="therapistprofile.php">
 
             <br><br>
             

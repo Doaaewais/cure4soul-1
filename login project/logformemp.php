@@ -9,7 +9,7 @@ if(isset($_POST['login'])){
 	$n=mysqli_real_escape_string($conn,$_POST['email']);
 	$p=mysqli_real_escape_string($conn,$_POST['password']);
 	
-    $t="SELECT * FROM therapist WHERE email ='$n' AND password ='$p' ";
+    $t="SELECT * FROM employee WHERE email ='$n' AND pass ='$p' ";
 
 	 $r=mysqli_query($conn,$t);
 	
@@ -17,7 +17,7 @@ if(isset($_POST['login'])){
     if(mysqli_num_rows($r)==1){
 		$_SESSION['name']=$n;
 		$_SESSION['success']="welcome dear";
-		header('location:therapistprofile.php');
+		header('location:employeeprofile.php');
 }
     else{
 		echo "wrong data!!!";

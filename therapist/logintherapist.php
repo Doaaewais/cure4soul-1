@@ -1,4 +1,6 @@
-<html>
+<?php include('connection.php');?>
+ 
+ <html>
 
 <head>
     
@@ -339,9 +341,7 @@
     </h4>
     <div class="frame">
 
-        <form >
-
-        <form method='POST' action="therapistprofile.php">
+        <form method="POST" action="logform.php">
 
             <br><br>
             
@@ -358,7 +358,7 @@
              <?php } ?>
 
             <a href="forgot.html" style="padding-left: 20px;">forgot your password?</a>
-            
+            </form>
     </div>
  
 </div>

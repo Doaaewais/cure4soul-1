@@ -1,4 +1,5 @@
 <?php include('connection.php');?>
+<?php include('logformemp.php');?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +29,7 @@
 	</style>
 </head>
 <body>
-	<div class="container">
+	<!--div class="container">
 		<h1 class="text-center">Doctor Schedule</h1>
 		<p class="text-center">Select a date and session time to book an appointment:</p>
 		<table class="table schedule-table">
@@ -85,7 +86,7 @@
                 </tr>
             </tbody>
         </table>
-    </div>
+    </div-->
     
     <!-- Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -93,3 +94,39 @@
     
             </body>
 			</html>
+			<?php
+// Assuming you have a MySQL database connection established
+
+// Start the session and retrieve the logged-in therapist's email from the session
+
+$n = $_SESSION['name']; // Modify this according to your authentication system
+
+// Retrieve the therapist's ID based on their email
+$query = "SELECT eid FROM employee WHERE email = '$n'";
+$result = mysqli_query($conn, $query);
+$row = mysqli_fetch_assoc($result);
+$n = $row['eid'];
+
+// Retrieve the therapist's schedule from the sessions table
+$query = "SELECT dayy, Time1,Time2,Time3 , status, eid, employee.tid,sessions.tid FROM sessions inner join employee on sessions.tid = employee.tid WHERE eid='$n' and employee.tid=sessions.tid;";
+$result = mysqli_query($conn, $query);
+
+// Display the schedule in a table format
+if (mysqli_num_rows($result) > 0) {
+    echo "<table>";
+    echo "<tr><th>Day</th><th>session 1</th><th>session 2</th><th>session 3</th><th></th></tr>";
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo "<td>" . $row['dayy'] . "</td>";
+        echo "<td>" . $row['Time1'] . "</td>";
+        echo "<td>" . $row['Time2'] . "</td>"; 
+        echo "<td>" . $row['Time3'] . "</td>";
+        echo "<td><button value=><span class='session-status " . ($row['status'] == 'booked' ? 'booked' : 'unbooked') . "'></span></button></td>";
+
+        echo "</tr>";
+    }
+    echo "</table>";
+} else {
+    echo "No schedule found.";
+}
+
+?>

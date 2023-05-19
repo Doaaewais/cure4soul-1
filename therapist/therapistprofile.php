@@ -87,6 +87,37 @@ color: white;}
                <div class="profile-left" style="width: 20%;height:700px;background-color: rgb(238, 237, 237);padding-top: 100px;">
                 <div class="section-img">
                     <img src="doccc.jpg" style="border-radius: 50%; width: 70%;margin-left: 40px;margin-top: 20px;">
+                    <?php
+// Assuming you have a MySQL database connection established
+
+// Start the session and retrieve the logged-in therapist's email from the session
+
+$therapistEmail = $_SESSION['name']; // Modify this according to your authentication system
+
+// Retrieve the therapist's ID based on their email
+$query = "SELECT tid FROM therapist WHERE email = '$therapistEmail'";
+$result = mysqli_query($conn, $query);
+$row = mysqli_fetch_assoc($result);
+$therapistId = $row['tid'];
+
+// Retrieve the therapist's schedule from the sessions table
+$query = "SELECT name,email,phone,qualif FROM therapist WHERE tid = $therapistId";
+$result = mysqli_query($conn, $query);
+
+// Display the schedule in a table format
+if (mysqli_num_rows($result) > 0) {
+   
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo "<h2>" . $row['name'] . "</h2><br>";
+        echo "<h2>" . $row['email'] . "</h2><br>";
+        echo "<h2>" . $row['phone'] . "</h2><br>"; 
+        echo "<h2>" . $row['qualif'] . "</h2><br>";
+    }
+} else {
+    echo "No schedule found.";
+}
+
+?>
                 </div>
             </div>
                <div class="profile-right" style="width: 80%;height:500;padding-top: 100px;">
@@ -97,7 +128,7 @@ color: white;}
                       
                      
                   
-                      <!-- <form>
+                      <form>
                         
                   
                         <div class="formbold-input-flex">
@@ -156,7 +187,7 @@ color: white;}
                           />
                         </div>
                         <button class="formbold-btn">Save</button>
-                      </form> -->
+                      </form> 
                     </div>
                   </div>
                      

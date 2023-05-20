@@ -201,6 +201,15 @@ if (mysqli_num_rows($result) > 0) {
 
 ?>
 <style>
+ table{  border: 1px solid; color:yellow;width:80%}
+ th, td {
+  border-bottom: 1px solid #ddd;
+}
+tr:hover {background-color: coral;}
+th {
+  background-color: #04AA6D;
+  color: white;
+}
 .session-status {
     display: inline-block;
     width: 16px;

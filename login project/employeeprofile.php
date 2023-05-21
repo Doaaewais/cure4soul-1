@@ -45,6 +45,23 @@
     .btn1 button:hover{background-color: #fad263;}
     .btn1 button a{text-decoration: none;
     color: white;}
+
+	/*testimonial*/
+
+.test-left{background-color:  rgb(226, 225, 225);
+    width:15%;
+    
+  }
+    .test-left img{width:80%;
+    margin-top:30px ; border-radius: 5%;margin-bottom: 20px;margin-left: 20px;}
+    .test-right{width:70%;background-color:  rgb(226, 225, 225);
+
+    }
+    .test-right h3{margin:50px 0px 10px 20px;
+        color:darkgoldenrod;
+    }
+    .test-right p{margin:0px 0px 10px 20px;
+    }
     </style>
 
 

@@ -55,7 +55,7 @@ color: white;}
     <body>
            
       <section class="nav" >
-        <div class="navbar"style="background-color:#1e6091;">
+        <div class="navbar"style="background-color:yellow;">
             <h2 style="color: white; font-weight: bold; padding-left: 40px;">cure4soul<span class="dot" style="color: #00c3da;">.</span></h2>
     
             <ul>
@@ -68,6 +68,9 @@ color: white;}
                 <li><a href="#contact">Contact</a></li>
                 
             </ul>
+            <div>
+<a href="logintherapist.php? logout='1'">log out </a>
+</div>
     
             <div class="nav-buttons" style="display: flex; justify-content: flex-end;">
                 <div class="btn1" style="padding-right: 10px;"><button><a href="">Member Login</a></button></div>
@@ -121,8 +124,9 @@ if (mysqli_num_rows($result) > 0) {
                 </div>
             </div>
                <div class="profile-right" style="width: 80%;height:500;padding-top: 100px;">
-
-                <div class="formbold-main-wrapper">
+            
+              
+               <div class="formbold-main-wrapper">
                  
                     <div class="formbold-form-wrapper">
                       
@@ -211,20 +215,17 @@ $row = mysqli_fetch_assoc($result);
 $therapistId = $row['tid'];
 
 // Retrieve the therapist's schedule from the sessions table
-$query = "SELECT dayy, Time1,Time2,Time3 , status FROM sessions WHERE tid = $therapistId";
+$query = "SELECT dayy, Time1, status FROM sessions WHERE tid = $therapistId";
 $result = mysqli_query($conn, $query);
 
 // Display the schedule in a table format
 if (mysqli_num_rows($result) > 0) {
     echo "<table>";
-    echo "<tr><th>Day</th><th>session 1</th><th>session 2</th><th>session 3</th><th>status</th></tr>";
+    echo "<tr><th>Day</th><th>session 1</th><th>status</th></tr>";
     while ($row = mysqli_fetch_assoc($result)) {
         echo "<td>" . $row['dayy'] . "</td>";
         echo "<td>" . $row['Time1'] . "</td>";
-        echo "<td>" . $row['Time2'] . "</td>"; 
-        echo "<td>" . $row['Time3'] . "</td>";
         echo "<td><span class='session-status " . ($row['status'] == 'booked' ? 'booked' : 'unbooked') . "'></span></td>";
-
         echo "</tr>";
     }
     echo "</table>";
@@ -234,15 +235,6 @@ if (mysqli_num_rows($result) > 0) {
 
 ?>
 <style>
- table{  border: 1px solid; color:yellow;width:80%}
- th, td {
-  border-bottom: 1px solid #ddd;
-}
-tr:hover {background-color: coral;}
-th {
-  background-color: #04AA6D;
-  color: white;
-}
 .session-status {
     display: inline-block;
     width: 16px;

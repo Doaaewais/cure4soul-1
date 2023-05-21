@@ -1,70 +1,8 @@
 <?php include('connection.php');?>
+<?php include('logformemp.php');?>
 <!DOCTYPE html>
 <html>
 <head>
-<head>
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/employeeprofile.css">
-        <link rel="styleshteet" href="css/all.min.css">
-        <link rel="stylesheet" href="css/fontawesome.min.css">
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/popper.min.js"></script>
-        <title>Employee Schedule</title>
-        <style>  .navbar{
-            display: flex;
-            justify-content: space-between;
-            
-            align-items: center;
-            position: fixed;
-            left:0px;
-            right: 0px;
-            }
-        .navbar ul{display: flex;
-            list-style: none;
-        justify-content: flex-end;
-        }
-        .navbar ul li{padding: 20px;
-        }
-        .navbar ul li a{text-decoration:none;
-        font-weight: 600;
-        margin:5px;
-        color: white;
-    
-    }
-    .navbar ul li a:hover{color: gray;}
-    .nav-buttons{margin-right: 40px; padding-bottom: 10px;}
-    .btn1 button {
-        background-color: orange;
-        width: 150px;
-        height: 40px;
-        border-radius: 8px;
-        border-style: none;
-       
-        
-    }
-    .btn1 button:hover{background-color: #fad263;}
-    .btn1 button a{text-decoration: none;
-    color: white;}
-
-	/*testimonial*/
-
-.test-left{background-color:  rgb(226, 225, 225);
-    width:15%;
-    
-  }
-    .test-left img{width:80%;
-    margin-top:30px ; border-radius: 5%;margin-bottom: 20px;margin-left: 20px;}
-    .test-right{width:70%;background-color:  rgb(226, 225, 225);
-
-    }
-    .test-right h3{margin:50px 0px 10px 20px;
-        color:darkgoldenrod;
-    }
-    .test-right p{margin:0px 0px 10px 20px;
-    }
-    </style>
-
-
 	<title>Doctor Schedule</title>
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -91,26 +29,6 @@
 	</style>
 </head>
 <body>
-</section>
-
-<!--testimonial-->
-<section class="test" style="margin-top: 120px;">
-	<div class="container">
-		<div class="test-details" style="display: flex;justify-content:center;">
-			<div class="test-left">
-				<img src="images/docc.jpg">
-			</div>
-			<div class="test-right">
-				<h3>Alex Du</h3>
-				<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.<br>
-					Ut quod temporibus ad repudiandae
-					veniam optio<br>
-					eos asperiores! Sapiente, natus dicta?</p>
-			</div>
-
-		</div>
-	</div>
-</section>
 	<div class="container">
 		<h1 class="text-center">Doctor Schedule</h1>
 		<p class="text-center">Select a date and session time to book an appointment:</p>
@@ -168,7 +86,7 @@
                 </tr>
             </tbody>
         </table>
-    </div>
+    </div-->
     
     <!-- Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -176,3 +94,37 @@
     
             </body>
 			</html>
+			<?php
+// Assuming you have a MySQL database connection established
+
+// Start the session and retrieve the logged-in therapist's email from the session
+
+$n = $_SESSION['name']; // Modify this according to your authentication system
+
+// Retrieve the therapist's ID based on their email
+$query = "SELECT eid FROM employee WHERE email = '$n'";
+$result = mysqli_query($conn, $query);
+$row = mysqli_fetch_assoc($result);
+$n = $row['eid'];
+
+// Retrieve the therapist's schedule from the sessions table
+$query = "SELECT dayy, Time1,Time2,Time3 , status, eid, employee.tid,sessions.tid FROM sessions inner join employee on sessions.tid = employee.tid WHERE eid='$n' and employee.tid=sessions.tid;";
+$result = mysqli_query($conn, $query);
+
+// Display the schedule in a table format
+if (mysqli_num_rows($result) > 0) {
+    echo "<table>";
+    echo "<tr><th>Day</th><th>session 1</th><th>session 2</th><th>session 3</th><th></th></tr>";
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo "<td>" . $row['dayy'] . "</td>";
+        echo "<td><button value=>" . $row['Time1'] . "</button></td>";
+        echo "<td><button value=>" . $row['Time2'] . "</button></td>"; 
+        echo "<td><button value=>" . $row['Time3'] . "</button></td>";
+        echo "</tr>";
+    }
+    echo "</table>";
+} else {
+    echo "No schedule found.";
+}
+
+?>
